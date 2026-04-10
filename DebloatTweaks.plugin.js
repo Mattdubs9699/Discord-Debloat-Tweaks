@@ -3,6 +3,8 @@
  * @author Tsunpot
  * @version 1.2.0
  * @description Hides selected Discord UI clutter with per-section slider toggles.
+ * @website https://github.com/Mattdubs9699/Discord-Debloat-Tweaks
+ * @source https://raw.githubusercontent.com/Mattdubs9699/Discord-Debloat-Tweaks/refs/heads/main/DebloatTweaks.plugin.js
  */
 
 module.exports = class DebloatTweaks {
