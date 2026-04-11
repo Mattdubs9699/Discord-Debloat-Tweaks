@@ -2,7 +2,7 @@
  * @name DebloatTweaks
  * @author Tsunpot
  * @authorID 379082028794118154
- * @version 1.2.0
+ * @version 1.3.0
  * @description Hides selected Discord UI clutter with per-section slider toggles.
  * @website https://github.com/Mattdubs9699/Discord-Debloat-Tweaks
  * @source https://raw.githubusercontent.com/Mattdubs9699/Discord-Debloat-Tweaks/refs/heads/main/DebloatTweaks.plugin.js
@@ -19,7 +19,9 @@ module.exports = class DebloatTweaks {
             hideQuests: true,
             hideDmDivider: true,
             hideBoostGoal: true,
-            hideSpacer: true
+            hideSpacer: true,
+            hideNitroClaimPopup: true,
+            hideDiscoverButton: true
         };
 
         this.settings = {};
@@ -74,7 +76,9 @@ module.exports = class DebloatTweaks {
             ["hideQuests", "Hide Quests in Direct Messages"],
             ["hideDmDivider", "Hide Direct Messages divider"],
             ["hideBoostGoal", "Hide Boost Goal block"],
-            ["hideSpacer", "Hide leftover 12px spacer"]
+            ["hideSpacer", "Hide leftover 12px spacer"],
+            ["hideNitroClaimPopup", "Hide Nitro claim popup offer"],
+            ["hideDiscoverButton", "Hide Discover button"]
         ];
 
         for (const [key, label] of items) {
@@ -215,14 +219,14 @@ module.exports = class DebloatTweaks {
             ${this.settings.hideActiveNow ? `
             /* Hide Active Now */
             *[class^="nowPlayingColumn"] {
-                display: none !important;
+                display: none;
             }
             ` : ""}
 
             ${this.settings.hideServerUtilityRows ? `
             /* Hide Server Guide / server utility rows */
             .link__2ea32.basicChannelRowLink__2ea32:has(.name__2ea32[aria-hidden="true"]) {
-                display: none !important;
+                display: none;
             }
             ` : ""}
 
@@ -232,14 +236,14 @@ module.exports = class DebloatTweaks {
             .friendsButtonContainer_e6b769 > .channel__972a0.container_e45859,
             .friendsButtonContainer_e6b769 .interactive_bf202d.interactive__972a0.linkButton__972a0,
             a.link__972a0[data-list-item-id$="___friends"][href="/channels/@me"] {
-                display: none !important;
-                height: 0 !important;
-                min-height: 0 !important;
-                max-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                overflow: hidden !important;
+                display: none;
+                height: 0;
+                min-height: 0;
+                max-height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
             }
             ` : ""}
 
@@ -250,14 +254,14 @@ module.exports = class DebloatTweaks {
             li.channel__972a0.container_e45859:has(> .interactive_bf202d.interactive__972a0.linkButton__972a0 > a.link__972a0[data-list-item-id$="___nitro"][href="/store"]),
             .interactive_bf202d.interactive__972a0.linkButton__972a0:has(> a.link__972a0[data-list-item-id$="___nitro"][href="/store"]),
             a.link__972a0[data-list-item-id$="___nitro"][href="/store"] {
-                display: none !important;
-                height: 0 !important;
-                min-height: 0 !important;
-                max-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                overflow: hidden !important;
+                display: none;
+                height: 0;
+                min-height:;
+                max-height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
             }
             ` : ""}
 
@@ -266,14 +270,14 @@ module.exports = class DebloatTweaks {
             li.channel__972a0.container_e45859:has(> .interactive_bf202d.interactive__972a0.linkButton__972a0 > a.link__972a0[data-list-item-id$="___shop"][href="/shop"]),
             .interactive_bf202d.interactive__972a0.linkButton__972a0:has(> a.link__972a0[data-list-item-id$="___shop"][href="/shop"]),
             a.link__972a0[data-list-item-id$="___shop"][href="/shop"] {
-                display: none !important;
-                height: 0 !important;
-                min-height: 0 !important;
-                max-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                overflow: hidden !important;
+                display: none;
+                height: 0;
+                min-height: 0;
+                max-height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
             }
             ` : ""}
 
@@ -284,28 +288,28 @@ module.exports = class DebloatTweaks {
             li.channel__972a0.container_e45859:has(> .interactive_bf202d.interactive__972a0.linkButton__972a0 > a.link__972a0[data-list-item-id$="___quests"][href="/quest-home"]),
             .interactive_bf202d.interactive__972a0.linkButton__972a0:has(> a.link__972a0[data-list-item-id$="___quests"][href="/quest-home"]),
             a.link__972a0[data-list-item-id$="___quests"][href="/quest-home"] {
-                display: none !important;
-                height: 0 !important;
-                min-height: 0 !important;
-                max-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                overflow: hidden !important;
+                display: none;
+                height: 0;
+                min-height: 0;
+                max-height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
             }
             ` : ""}
 
             ${this.settings.hideDmDivider ? `
             /* Hide Direct Messages divider left behind */
             .sectionDivider_e6b769 {
-                display: none !important;
-                height: 0 !important;
-                min-height: 0 !important;
-                max-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                overflow: hidden !important;
+                display: none;
+                height: 0;
+                min-height: 0;
+                max-height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
             }
             ` : ""}
 
@@ -313,28 +317,42 @@ module.exports = class DebloatTweaks {
             /* Hide Boost Goal block */
             .container__0d0f9.containerWithMargin__0d0f9:has(.boostCountText__0d0f9),
             .containerWithMargin__0d0f9:has(.boostCountText__0d0f9) {
-                display: none !important;
-                height: 0 !important;
-                min-height: 0 !important;
-                max-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                overflow: hidden !important;
+                display: none;
+                height: 0;
+                min-height: 0;
+                max-height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
             }
             ` : ""}
 
             ${this.settings.hideSpacer ? `
             /* Hide leftover 12px spacer */
             div[style="height: 12px;"] {
-                display: none !important;
-                height: 0 !important;
-                min-height: 0 !important;
-                max-height: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                overflow: hidden !important;
+                display: none;
+                height: 0;
+                min-height: 0;
+                max-height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
+            }
+            ` : ""}
+
+            ${this.settings.hideNitroClaimPopup ? `
+            /* Hide Nitro claim offer popup */
+            .container_a62383.nitro-pink_a62383.popoverGradientWrapper_d6f39b {
+                display: none;
+            }
+            ` : ""}
+
+            ${this.settings.hideDiscoverButton ? `
+            /* Hide the Discover button in the server list */
+            .listItem__650eb:has([data-list-item-id="guildsnav___guild-discover-button"]) {
+                display: none;
             }
             ` : ""}
         `;
